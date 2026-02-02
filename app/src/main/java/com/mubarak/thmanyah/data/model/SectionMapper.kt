@@ -15,12 +15,14 @@ object SectionMapper {
                 contentType = ContentType.from(dto.contentType),
                 order = when (val o = dto.order) {
                     is Number -> o.toInt()
-                    is String -> o.toIntOrNull() ?: 0   // search API may return non-numeric
+                    is String -> o.toIntOrNull() ?: 0
                     else -> 0
                 },
                 items = dto.content.mapNotNull { mapItem(it, dto.contentType) }
             )
-        }.sortedBy { it.order }
+        }
+            .distinctBy { it.name to it.order }
+            .sortedBy { it.order }
 
     private fun mapItem(json: JsonElement, contentType: String): ContentItem? {
         return try {

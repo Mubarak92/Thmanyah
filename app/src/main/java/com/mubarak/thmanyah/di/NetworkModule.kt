@@ -18,6 +18,8 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
+    private const val BASE_URL = "https://api-v2-b2sit6oh3a-uc.a.run.app/"
+
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
@@ -34,9 +36,8 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideApiService(client: OkHttpClient): ThmanyahApiService {
-        // Base URL is a placeholder — actual URLs are passed via @Url in each call
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(BASE_URL)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
