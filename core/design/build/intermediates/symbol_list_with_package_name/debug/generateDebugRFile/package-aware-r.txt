@@ -1,1 +1,1 @@
-com.mubarak.design
+com.mubarak.thmanyah.core.design
