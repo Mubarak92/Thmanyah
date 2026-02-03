@@ -1,16 +1,16 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest5139618833621415082.xml:2:13-83
-INJECTED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest5139618833621415082.xml:2:13-83
+ADDED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest61430578028801875.xml:2:13-83
+INJECTED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest61430578028801875.xml:2:13-83
 	package
-		INJECTED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest5139618833621415082.xml
+		INJECTED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest61430578028801875.xml
 	xmlns:android
-		ADDED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest5139618833621415082.xml:2:23-81
+		ADDED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest61430578028801875.xml:2:23-81
 uses-sdk
-INJECTED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest5139618833621415082.xml reason: use-sdk injection requested
-INJECTED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest5139618833621415082.xml
-INJECTED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest5139618833621415082.xml
+INJECTED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest61430578028801875.xml reason: use-sdk injection requested
+INJECTED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest61430578028801875.xml
+INJECTED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest61430578028801875.xml
 	android:targetSdkVersion
-		INJECTED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest5139618833621415082.xml
+		INJECTED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest61430578028801875.xml
 	android:minSdkVersion
-		INJECTED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest5139618833621415082.xml
+		INJECTED from E:\Thmanyah\core\design\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest61430578028801875.xml
