@@ -21,4 +21,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "Thmanyah"
 include(":app")
- 
+include(":core")
+include(":core:common")
+include(":core:network")
+include(":core:design")
+include(":core:testing")
