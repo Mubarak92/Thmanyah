@@ -92,6 +92,10 @@ network = [
     "gson"
 ]
 
+coroutines = [
+    "kotlinx-coroutines-core"
+]
+
 hilt = [
     "hilt-android",
     "hilt-navigation-compose"
