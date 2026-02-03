@@ -8,32 +8,46 @@ plugins {
 
 android {
     namespace = "com.mubarak.thmanyah"
-    compileSdk = 36
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.mubarak.thmanyah"
-        minSdk = 24
-        targetSdk = 36
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    packaging {
-        resources {
-            excludes += "META-INF/versions/9/OSGI-INF/MANIFEST.MF"
+    buildTypes {
+        debug {
+            isDebuggable = true
+            applicationIdSuffix = ".debug"
+        }
+        release {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+    flavorDimensions += "services"
+    productFlavors {
+        create("gms") {
+            dimension = "services"
+            buildConfigField("String", "SERVICE_TYPE", "\"GMS\"")
         }
+        create("hms") {
+            dimension = "services"
+            applicationIdSuffix = ".huawei"
+            buildConfigField("String", "SERVICE_TYPE", "\"HMS\"")
+        }
+    }
+
+    buildFeatures {
+        compose = true
+        buildConfig = true
     }
 
     compileOptions {
@@ -41,30 +55,31 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
-    buildFeatures {
-        compose = true
+    packaging {
+        resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" }
     }
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.bundles.lifecycle)
+    implementation(project(":core:common"))
+    implementation(project(":core:network"))
+    implementation(project(":core:design"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
+    implementation(project(":features:home"))
+    implementation(project(":features:search"))
 
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.compose)
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    implementation(libs.androidx.compose.material.icons.core)
-
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.bundles.lifecycle)
     implementation(libs.bundles.hilt)
     ksp(libs.hilt.android.compiler)
 
-    implementation(libs.bundles.network)
-    implementation(libs.coil.compose)
+    "gmsImplementation"(libs.gms.play.services)
+    "hmsImplementation"(libs.hms.core)
 
     testImplementation(libs.bundles.testing)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
 }

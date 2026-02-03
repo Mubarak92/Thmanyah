@@ -2,6 +2,12 @@
 kotlin = "2.2.20"
 ksp = "2.2.20-2.0.4"
 agp = "8.9.1"
+minSdk = "24"
+compileSdk = "36"
+targetSdk = "36"
+gmsPlayServices = "21.2.0"
+hmsCore = "6.6.0.300"
+hmsInstaller = "6.6.0.300"
 coreKtx = "1.17.0"
 activityCompose = "1.12.3"
 lifecycle = "2.10.0"
@@ -54,6 +60,9 @@ mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", versio
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesTest" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+hms-core = { group = "com.huawei.hms", name = "base", version.ref = "hmsCore" }
+gms-play-services = { group = "com.google.android.gms", name = "play-services-base", version.ref = "gmsPlayServices" }
+hms-installer = { group = "com.huawei.hms", name = "hmscoreinstaller", version.ref = "hmsInstaller" }
 
 [bundles]
 compose = [
