@@ -7,8 +7,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.mubarak.thmanyah.feature.home.presentation.screen.HomeScreen
 import com.mubarak.thmanyah.feature.home.presentation.viewmodel.HomeViewModel
-//import com.mubarak.thmanyah.feature.search.presentation.screen.SearchScreen
-//import com.mubarak.thmanyah.feature.search.presentation.viewmodel.SearchViewModel
+import com.mubarak.thmanyah.feature.search.presentation.screen.SearchScreen
+import com.mubarak.thmanyah.feature.search.presentation.viewmodel.SearchViewModel
 
 object Routes {
     const val HOME = "home"
@@ -27,12 +27,12 @@ fun ThmanyahNavGraph() {
                 onSearchClick = { navController.navigate(Routes.SEARCH) }
             )
         }
-//        composable(Routes.SEARCH) {
-//            val viewModel: SearchViewModel = hiltViewModel()
-//            SearchScreen(
-//                viewModel = viewModel,
-//                onBackClick = { navController.popBackStack() }
-//            )
-//        }
+        composable(Routes.SEARCH) {
+            val viewModel: SearchViewModel = hiltViewModel()
+            SearchScreen(
+                viewModel = viewModel,
+                onBackClick = { navController.popBackStack() }
+            )
+        }
     }
 }
