@@ -1,6 +1,5 @@
 package com.mubarak.thmanyah.feature.search.presentation.screen
 
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -42,7 +41,9 @@ fun SearchScreen(viewModel: SearchViewModel, onBackClick: () -> Unit) {
                             focusedIndicatorColor = MaterialTheme.colorScheme.background,
                             unfocusedIndicatorColor = MaterialTheme.colorScheme.background
                         ),
-                        modifier = Modifier.fillMaxWidth().focusRequester(focusRequester)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .focusRequester(focusRequester)
                     )
                 },
                 navigationIcon = {
@@ -62,11 +63,19 @@ fun SearchScreen(viewModel: SearchViewModel, onBackClick: () -> Unit) {
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
-        Box(modifier = Modifier.fillMaxSize().padding(padding).background(MaterialTheme.colorScheme.background)) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .background(MaterialTheme.colorScheme.background)
+        ) {
             when {
                 uiState.isLoading -> CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
                 uiState.error != null -> {
-                    Column(modifier = Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
+                    Column(
+                        modifier = Modifier.align(Alignment.Center),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
                         Text(
                             uiState.error ?: "Error",
                             color = MaterialTheme.colorScheme.error
@@ -75,16 +84,19 @@ fun SearchScreen(viewModel: SearchViewModel, onBackClick: () -> Unit) {
                         Button(onClick = { viewModel.retry() }) { Text("Retry") }
                     }
                 }
+
                 uiState.showEmptyState -> Text(
                     "No results found",
                     modifier = Modifier.align(Alignment.Center),
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
+
                 uiState.showInitialState -> Text(
                     "Search for podcasts",
                     modifier = Modifier.align(Alignment.Center),
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
+
                 uiState.showResults -> {
                     LazyColumn(modifier = Modifier.fillMaxSize()) {
                         items(uiState.sections, key = { it.id }) { section ->

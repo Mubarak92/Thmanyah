@@ -1,1 +1,0 @@
--keep,allowobfuscation,allowshrinking class com.mubarak.thmanyah.feature.home.presentation.viewmodel.HomeViewModel
