@@ -32,6 +32,8 @@ coroutines = "1.9.0"
 javaxInject = "1"
 appcompat = "1.7.1"
 material = "1.13.0"
+truth = "1.4.5"
+mockk = "1.13.13"
 
 [libraries]
 androidx-compose-material-icons-core = { module = "androidx.compose.material:material-icons-core", version.ref = "materialIconsCore" }
@@ -70,6 +72,10 @@ material = { group = "com.google.android.material", name = "material", version.r
 hms-core = { group = "com.huawei.hms", name = "base", version.ref = "hmsCore" }
 gms-play-services = { group = "com.google.android.gms", name = "play-services-base", version.ref = "gmsPlayServices" }
 hms-installer = { group = "com.huawei.hms", name = "hmscoreinstaller", version.ref = "hmsInstaller" }
+hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
+google-truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
+mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
+mockk-agent = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 
 [bundles]
 compose = [
@@ -109,7 +115,10 @@ testing = [
     "androidx-espresso-core",
     "mockito-core",
     "mockito-kotlin",
-    "kotlinx-coroutines-test"
+    "kotlinx-coroutines-test",
+    "google-truth",
+    "mockk-android",
+    "mockk-agent"
 ]
 
 [plugins]
