@@ -3,7 +3,7 @@ package com.mubarak.thmanyah.feature.home.presentation.component
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -18,7 +18,6 @@ import coil.compose.AsyncImage
 import com.mubarak.thmanyah.domain.model.ContentItem
 import com.mubarak.thmanyah.domain.model.Section
 import com.mubarak.thmanyah.domain.model.SectionType
-import kotlin.collections.withIndex
 
 @Composable
 fun SectionRow(section: Section, modifier: Modifier = Modifier) {
@@ -42,7 +41,7 @@ fun SectionRow(section: Section, modifier: Modifier = Modifier) {
 @Composable
 private fun SquareRow(items: List<ContentItem>, size: androidx.compose.ui.unit.Dp) {
     LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-        items(items, key = { it.id }) { item ->
+        itemsIndexed(items, key = { index, item -> "${item.id}_$index" }) { _, item ->
             Column(modifier = Modifier.width(size)) {
                 AsyncImage(
                     model = item.imageUrl, contentDescription = item.name,
@@ -63,16 +62,18 @@ private fun SquareRow(items: List<ContentItem>, size: androidx.compose.ui.unit.D
 private fun TwoLinesGridRow(items: List<ContentItem>) {
     val pairs = items.chunked(2)
     LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-        items(pairs, key = { it.joinToString { i -> i.id } }) { pair ->
+        itemsIndexed(pairs, key = { index, _ -> "pair_$index" }) { _, pair ->
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                pair.forEach { item -> EpisodeTile(item) }
+                pair.forEachIndexed { pairIndex, item ->
+                    EpisodeTile(item, key = "${item.id}_$pairIndex")
+                }
             }
         }
     }
 }
 
 @Composable
-private fun EpisodeTile(item: ContentItem) {
+private fun EpisodeTile(item: ContentItem, key: String = item.id) {
     Row(
         modifier = Modifier.width(280.dp).clip(RoundedCornerShape(8.dp)).background(MaterialTheme.colorScheme.surface).padding(8.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -95,7 +96,7 @@ private fun EpisodeTile(item: ContentItem) {
 @Composable
 private fun QueueRow(items: List<ContentItem>) {
     LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-        items(items.withIndex().toList(), key = { it.value.id }) { (idx, item) ->
+        itemsIndexed(items, key = { index, item -> "${item.id}_$index" }) { idx, item ->
             Column(modifier = Modifier.width(120.dp)) {
                 Box {
                     AsyncImage(
