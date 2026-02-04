@@ -34,5 +34,7 @@ dependencies {
     ksp(libs.hilt.android.compiler)
     implementation(libs.coil.compose)
     implementation(libs.androidx.compose.material.icons.extended)
+
+    testImplementation(project(":core:testing"))
     testImplementation(libs.bundles.testing)
 }
